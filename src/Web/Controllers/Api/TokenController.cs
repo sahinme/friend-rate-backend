@@ -36,7 +36,7 @@ namespace Microsoft.Nnn.Web.Controllers.Api
                 var isUserValid = await _userService.Login(request); 
                 if (!isUserValid)
                 {
-                    return NotFound();
+                    return Ok(new {success = false});
                 }
  
                 var claims = new[]

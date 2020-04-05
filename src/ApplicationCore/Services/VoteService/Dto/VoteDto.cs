@@ -1,3 +1,5 @@
+using System;
+
 namespace Microsoft.Nnn.ApplicationCore.Services.VoteService.Dto
 {
     public class VoteDto
@@ -5,17 +7,16 @@ namespace Microsoft.Nnn.ApplicationCore.Services.VoteService.Dto
         public long Id { get; set; }
         public string User { get; set; }
         public string VoterName { get; set; }
-        public int Honest { get; set; }
-        public int Reliable { get; set; } // guvenilir
-        public int Handsome { get; set; }
-        public int Beautiful { get; set; }
-        public int Clever { get; set; }
-        public int Impressive { get; set; }
-        public int Sympathetic { get; set; }
-        public int ClothingStyle { get; set; }
-        public int MakeUp { get; set; }
-        public int Funny { get; set; }
-        public int HairStyle { get; set; }
-        public int TalkingStyle { get; set; }
+        public DateTime CreatedDateTime { get; set; }
+        public string Survivor { get; set; }
+        public string Series { get; set; } 
+        public string Netflix { get; set; }
+        public string Singer { get; set; }
+        public string Instrument { get; set; }
+        public string CarModel { get; set; }
+        public string Startup { get; set; }
+        public string MusicType { get; set; }
+        public string Football { get; set; }
+        public string YesilCam { get; set; }
     }
 }

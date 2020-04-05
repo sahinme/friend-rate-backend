@@ -386,43 +386,39 @@ namespace Microsoft.Nnn.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Beautiful");
-
-                    b.Property<int>("Clever");
-
-                    b.Property<int>("ClothingStyle");
+                    b.Property<string>("CarModel");
 
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("CreatorUserId");
 
-                    b.Property<int>("Funny");
+                    b.Property<string>("Football");
 
-                    b.Property<int>("HairStyle");
-
-                    b.Property<int>("Handsome");
-
-                    b.Property<int>("Honest");
-
-                    b.Property<int>("Impressive");
+                    b.Property<string>("Instrument");
 
                     b.Property<bool>("IsDeleted");
-
-                    b.Property<int>("MakeUp");
 
                     b.Property<string>("ModifiedBy");
 
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<int>("Reliable");
+                    b.Property<string>("MusicType");
 
-                    b.Property<int>("Sympathetic");
+                    b.Property<string>("Netflix");
 
-                    b.Property<int>("TalkingStyle");
+                    b.Property<string>("Series");
+
+                    b.Property<string>("Singer");
+
+                    b.Property<string>("Startup");
+
+                    b.Property<string>("Survivor");
 
                     b.Property<long>("UserId");
 
                     b.Property<string>("VoterName");
+
+                    b.Property<string>("YesilCam");
 
                     b.HasKey("Id");
 

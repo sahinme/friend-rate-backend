@@ -6,7 +6,7 @@ namespace Microsoft.Nnn.ApplicationCore.Interfaces
 {
     public interface IUserService
     {
-        Task<User> CreateUser(CreateUserDto input);
+        Task<UserDto> CreateUser(CreateUserDto input);
         Task<UserDto> GetUserById(int id);
         Task<UserDto> GetUserByName(string username);
         Task UpdateUser(UpdateUserDto input);

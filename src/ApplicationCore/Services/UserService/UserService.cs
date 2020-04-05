@@ -21,8 +21,24 @@ namespace Microsoft.Nnn.ApplicationCore.Services.UserService
             _blobService = blobService;
         }
         
-        public async Task<User> CreateUser(CreateUserDto input)
+        public async Task<UserDto> CreateUser(CreateUserDto input)
         {
+            var isUsernameExist = await _userRepository.GetAll().Where(x => x.Username == input.Username)
+                .FirstOrDefaultAsync();
+            if (isUsernameExist != null)
+            {
+                var usernameTaken = new UserDto {Username = "taken"};
+                return usernameTaken;
+            }
+            
+            var isUEmailExist = await _userRepository.GetAll().Where(x => x.EmailAddress == input.EmailAddress)
+                .FirstOrDefaultAsync();
+            if (isUEmailExist != null)
+            {
+                var emailTaken = new UserDto {EmailAddress = "taken"};
+                return emailTaken;
+            }
+            
             var user = new User
             {
                 Username = input.Username,
@@ -37,7 +53,12 @@ namespace Microsoft.Nnn.ApplicationCore.Services.UserService
             var hashedPassword = SecurePasswordHasherHelper.Hash(input.Password);
             user.Password = hashedPassword;
             await _userRepository.AddAsync(user);
-            return user;
+            var userData = new UserDto
+            {
+                Id = user.Id,
+                Username = user.Username,
+            };
+            return userData;
         }
 
         public async Task<UserDto> GetUserById(int id)
@@ -45,6 +66,7 @@ namespace Microsoft.Nnn.ApplicationCore.Services.UserService
             var user = await _userRepository.GetAll().Where(x => x.Id == id).Select(x => new UserDto
             {
                 Id = x.Id,
+                Gender = x.Gender,
                 Username = x.Username,
                 ProfileImagePath = BlobService.BlobService.GetImageUrl(x.ProfileImagePath)
             }).FirstOrDefaultAsync();
@@ -56,6 +78,7 @@ namespace Microsoft.Nnn.ApplicationCore.Services.UserService
             var user = await _userRepository.GetAll().Where(x => x.Username == username).Select(x => new UserDto
             {
                 Id = x.Id,
+                Gender = x.Gender,
                 Username = x.Username,
                 ProfileImagePath = BlobService.BlobService.GetImageUrl(x.ProfileImagePath)
             }).FirstOrDefaultAsync();
@@ -83,14 +106,13 @@ namespace Microsoft.Nnn.ApplicationCore.Services.UserService
                 .FirstOrDefaultAsync(x => x.Username == input.Username);
             if (user == null)
             {
-                throw new Exception("There is no user!");
+                return false;
             }
             var decodedPassword = SecurePasswordHasherHelper.Verify(input.Password, user.Password);
             if (!decodedPassword)
             {
                 return false;
             }
-
             return true;
         }
 

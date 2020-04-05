@@ -23,9 +23,9 @@ namespace Microsoft.Nnn.Web.Controllers.Api
            }
            
            [HttpGet]
-           public async  Task<IActionResult> GetUserVotes(long id)
+           public async  Task<IActionResult> GetUserVotes(string username)
            {
-               var result = await _voteAppService.GetUserVotes(id);
+               var result = await _voteAppService.GetUserVotes(username);
                return Ok( new {success=true,result,message="List successfuly fetched"} );
            }
        }

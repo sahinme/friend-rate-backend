@@ -13,7 +13,7 @@ using Microsoft.Nnn.ApplicationCore.Entities.Votes;
 
 namespace Microsoft.Nnn.Infrastructure.Data
 {
-    //dotnet ef migrations add hosting_initial --context NnnContext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj -o Data/Migrations
+    //dotnet ef migrations add asdsadsa --context NnnContext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj -o Data/Migrations
     public class NnnContext : DbContext
     {
         public NnnContext(DbContextOptions<NnnContext> options) : base(options)

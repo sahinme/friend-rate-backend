@@ -8,6 +8,6 @@ namespace Microsoft.Nnn.ApplicationCore.Services.VoteService
     public interface IVoteAppService
     {
         Task<Vote> CreateVote(CreateVoteDto input);
-        Task<List<VoteDto>> GetUserVotes(long userId);
+        Task<List<VoteDto>> GetUserVotes(string username);
     }
 }
